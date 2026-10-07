@@ -1,0 +1,9 @@
+# Exclude all data files
+*.csv
+*.parquet
+*.json
+
+# Exclude virtual environments and cache
+venv/
+__pycache__/
+.env

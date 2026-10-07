@@ -1,0 +1,16 @@
+# fraud_data_quality.yaml
+rules:
+  - column: isFraud
+    dimension: VALIDITY
+    ruleBindings:
+      - rule:
+          type: REGEX
+          params:
+            pattern: "^[01]$"
+  - column: TransactionAmt
+    dimension: VALIDITY
+    ruleBindings:
+      - rule:
+          type: MIN_VALUE
+          params:
+            min_value: 0.01
