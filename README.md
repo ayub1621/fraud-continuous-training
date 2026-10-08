@@ -52,6 +52,9 @@ gcloud storage cp train_identity.csv gs://<YOUR-BUCKET-NAME>/raw/
 * `mlops_pipeline/pipeline.py`: The Python KFP definition dictating the cloud execution DAG.
 * `mlops_pipeline/simulate_traffic.py`: Restructures Pandas DataFrames into raw 2D NumPy matrices for serving container compatibility and streams logs to BigQuery.
 
+## Engineering Highlight: Bypassing Vertex AI Schema Mismatches
+When serving XGBoost models, standard Pandas DataFrames often trigger schema-mismatch errors in Vertex AI prediction containers due to embedded column metadata. To ensure robust real-time serving, I engineered the pipeline to strip DataFrames into raw 2D NumPy matrices prior to payload transmission, entirely decoupling the model from hardcoded feature names and eliminating serialization crashes.
+
 ## 👨‍💻 Author
 **Ayub**
 Google Cloud Certified Professional Machine Learning Engineer
